@@ -45,7 +45,7 @@ function AddRecipe() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3000/recipes", recipe)
+      .post("http://localhost:3000/recipes", {...recipe, ingredients})
       .then((response) => {
         debugger;
       })
