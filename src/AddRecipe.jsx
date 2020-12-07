@@ -29,7 +29,11 @@ function AddRecipe() {
     });
   }
 
-  function handleIngredientsChange(value, index) {}
+  function handleIngredientsChange(value, index) {
+    let ingredientsCopy = [...ingredients];
+    ingredientsCopy[index] = value;
+    setIngredients(ingredientsCopy);
+  }
 
   function addIngredient() {
     setIngredients([...ingredients, ""]);
@@ -44,12 +48,21 @@ function AddRecipe() {
   function addRecipe(event) {
     event.preventDefault();
 
-    axios
-      .post("http://localhost:3000/recipes", {...recipe, ingredients})
+    var config = {
+      method: 'post',
+      url: 'http://localhost:3000/recipes',
+      headers: { 
+        'Authorization': `Bearer ${localStorage.getItem("token")}`, 
+        'Content-Type': 'application/json'
+      },
+      data :  { ...recipe, ingredients }
+    };
+    
+    axios(config)
       .then((response) => {
         debugger;
       })
-      .catch(() => {
+      .catch((error) => {
         debugger;
       });
   }
@@ -93,7 +106,7 @@ function AddRecipe() {
               />
             </div>
 
-            {ingredients.map((tag, index) => (
+            {ingredients.map((ingredient, index) => (
               <div className="form-group">
                 <label htmlFor="ingredient">Ingredient</label>
                 <input
@@ -101,7 +114,7 @@ function AddRecipe() {
                   className="form-control"
                   name="ingredient"
                   placeholder="ingredient"
-                  value={recipe.dishType}
+                  value={ingredients[index]}
                   onChange={(e) =>
                     handleIngredientsChange(e.target.value, index)
                   }
@@ -119,6 +132,20 @@ function AddRecipe() {
                 </div>
               </div>
             ))}
+
+            {ingredients.length == 0 && (
+              <div className="d-flex justify-content-between pt-3">
+                <button className="btn btn-primary" onClick={addIngredient}>
+                  +
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => removeIngredient(0)}
+                >
+                  -
+                </button>
+              </div>
+            )}
 
             <button className="btn btn-primary" type="submit">
               Add Recipe
