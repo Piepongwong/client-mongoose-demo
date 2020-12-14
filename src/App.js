@@ -4,6 +4,9 @@ import AddRecipe from "./AddRecipe";
 import {Route} from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
+import PrivateRoute from "./components/PrivateRoute";
+import Profile from "./Profile";
+import PremiumContent from "./PremiumContent";
 
 function App() {
   const [recipes, setRecipes] = useState(false);
@@ -33,10 +36,9 @@ function App() {
         <Route path="/add-recipe" component={AddRecipe} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
+        <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute path="/loggedinonly" component={PremiumContent} />
 
-        {/* {recipes && recipes.map((recipe)=> {
-          return <h1>{recipe.title}</h1>
-        })} */}
     </div>
   );
 }
