@@ -3,8 +3,9 @@ import { userContext } from "./contexts/User";
 import axios from "axios";
 
 export default function Login() {
-  const { setUser: setUserContext } = useContext(userContext);
-  const [user, setUser] = useState({
+  const { setUser } = useContext(userContext);
+  
+  const [user, setUserForm] = useState({
     email: "",
     password: "",
   });
@@ -15,7 +16,8 @@ export default function Login() {
     axios
       .post("http://localhost:3000/auth/login", user)
       .then((response) => {
-        setUserContext(user);
+        debugger
+        setUser(response.data.user);
         localStorage.setItem("token", response.data.token);
       })
       .catch((err) => {
@@ -25,7 +27,7 @@ export default function Login() {
   }
 
   function handleChange(event) {
-    setUser({
+    setUserForm({
       ...user,
       [event.target.name]: event.target.value,
     });
