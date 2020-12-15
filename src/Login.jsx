@@ -1,20 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
+import { userContext } from "./contexts/User";
 import axios from "axios";
 
 export default function Login() {
+  const { setUser: setUserContext } = useContext(userContext);
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
   function loginUser(event) {
+
     event.preventDefault();
-    debugger;
     axios
       .post("http://localhost:3000/auth/login", user)
       .then((response) => {
-        // success!
-        debugger;
+        setUserContext(user);
         localStorage.setItem("token", response.data.token);
       })
       .catch((err) => {

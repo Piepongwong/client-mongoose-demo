@@ -7,6 +7,7 @@ import Login from "./Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./Profile";
 import PremiumContent from "./PremiumContent";
+import Nav from "./components/Nav";
 
 function App() {
   const [recipes, setRecipes] = useState(false);
@@ -32,7 +33,7 @@ function App() {
   
   return (
     <div className="App">
-
+      <Nav />
         <Route path="/add-recipe" component={AddRecipe} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
