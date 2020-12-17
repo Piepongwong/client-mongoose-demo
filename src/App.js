@@ -33,7 +33,7 @@ function App() {
   
   return (
     <div className="App">
-      <Nav />
+        <Nav />
         <Route path="/add-recipe" component={AddRecipe} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />

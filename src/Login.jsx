@@ -14,7 +14,7 @@ export default function Login() {
 
     event.preventDefault();
     axios
-      .post("http://localhost:3000/auth/login", user)
+      .post(`${process.env.REACT_APP_BACKEND}/auth/login`, user)
       .then((response) => {
         debugger
         setUser(response.data.user);

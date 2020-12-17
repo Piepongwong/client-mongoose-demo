@@ -11,7 +11,7 @@ export default function Signup(props) {
     event.preventDefault();
     debugger;
     axios
-      .post("http://localhost:3000/auth/signup", user)
+      .post(`${process.env.REACT_APP_BACKEND}/auth/signup`, user)
       .then((response) => {
         // success!
         debugger;

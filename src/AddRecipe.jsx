@@ -50,7 +50,7 @@ function AddRecipe() {
 
     var config = {
       method: 'post',
-      url: 'http://localhost:3000/recipes',
+      url: `${process.env.REACT_APP_BACKEND}/recipes`,
       headers: { 
         'Authorization': `Bearer ${localStorage.getItem("token")}`, 
         'Content-Type': 'application/json'

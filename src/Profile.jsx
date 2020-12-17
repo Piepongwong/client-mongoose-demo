@@ -9,7 +9,7 @@ function Profile() {
     formData.append("profile_picture", selectedFile);
 
     axios
-      .post("http://localhost:3000/user/profile-pic", formData, {
+      .post(`${process.env.REACT_APP_BACKEND}/user/profile-pic`, formData, {
         headers: { 
         'Authorization': `Bearer ${localStorage.getItem("token")}`, 
         }
