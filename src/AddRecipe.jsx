@@ -133,7 +133,7 @@ function AddRecipe() {
               </div>
             ))}
 
-            {ingredients.length == 0 && (
+            {ingredients.length === 0 && (
               <div className="d-flex justify-content-between pt-3">
                 <button className="btn btn-primary" onClick={addIngredient}>
                   +

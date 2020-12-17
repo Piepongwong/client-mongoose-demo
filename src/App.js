@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import axios from "axios";
 import AddRecipe from "./AddRecipe";
 import {Route} from "react-router-dom";
 import Signup from "./Signup";
@@ -9,28 +8,7 @@ import Profile from "./Profile";
 import PremiumContent from "./PremiumContent";
 import Nav from "./components/Nav";
 
-function App() {
-  const [recipes, setRecipes] = useState(false);
-
-  useEffect(()=> {
-    // axios.get("http://localhost:3000/recipes")
-    //   .then((response)=> {
-    //     setRecipes(response.data)
-    //   })
-    //   .catch((err)=> {
-
-    //   })
-
-      // axios.post("http://localhost:3000/recipes", {title: "lalala"})
-      // .then((response)=> {
-      //   debugger
-      //   setRecipes(response.data)
-      // })
-      // .catch((err)=> {
-      //   debugger
-      // })
-  },[])
-  
+function App() {  
   return (
     <div className="App">
         <Nav />
